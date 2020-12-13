@@ -19,33 +19,32 @@ public class CartPage extends Page {
   }
 
 
-
-  @FindBy (css="button[name='remove_cart_item']")
+  @FindBy(css = "button[name='remove_cart_item']")
   public WebElement removeButton;
 
-  @FindBy (css=".dataTable.rounded-corners")
+  @FindBy(css = ".dataTable.rounded-corners")
   public WebElement orderTable;
 
-  @FindBy(css=".dataTable.rounded-corners tr")
+  @FindBy(css = ".dataTable.rounded-corners tr")
   public List<WebElement> orderTableRows;
 
-  @FindBy (css=".items li")
+  @FindBy(css = ".items li")
   public List<WebElement> cartItems;
 
-  @FindBy (css="li.shortcut")
+  @FindBy(css = "li.shortcut")
   public WebElement item;
 
 
- public void waitForTableDisappears(){
-   wait.until(ExpectedConditions.stalenessOf(wd.findElement(By.cssSelector(".dataTable.rounded-corners"))));
+  public void waitForTableDisappears() {
+    wait.until(ExpectedConditions.stalenessOf(wd.findElement(By.cssSelector(".dataTable.rounded-corners"))));
   }
 
-  public void waitTextMatches(){
+  public void waitTextMatches() {
     wait.until(ExpectedConditions.textMatches(By.cssSelector("div#checkout-cart-wrapper"), Pattern.compile("^There are no items in your cart.")));
   }
 
-public void waitForCartItems(int count){
-  wait.until(ExpectedConditions.numberOfElementsToBe(By.cssSelector(".dataTable.rounded-corners tr"), count));
-}
+  public void waitForCartItems(int count) {
+    wait.until(ExpectedConditions.numberOfElementsToBe(By.cssSelector(".dataTable.rounded-corners tr"), count));
+  }
 
 }
